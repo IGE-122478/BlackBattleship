@@ -62,7 +62,7 @@ public class MainPageTest {
         mainPage.seeDeveloperToolsButton.click();
         Thread.sleep(3000);
 
-        // Usa JavaScript para clicar (contorna elementos que tapam o botÃ£o)
+        // Usa JavaScript para clicar (contorna elementos que tapam o botão)
         ((org.openqa.selenium.JavascriptExecutor) driver)
                 .executeScript("arguments[0].click();", mainPage.findYourToolsButton);
         Thread.sleep(3000);
