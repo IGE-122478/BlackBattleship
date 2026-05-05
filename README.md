@@ -57,3 +57,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 **US13** — Como jogador, quero saber quando perco ou ganho a partida através de uma mensagem clara no ecrã.
 
 **US14** — Como utilizador, quero acederà página principal do jogo a partir de qualquer momento da navegação.
+
+**US15** — Como utilizador, quero poder desistir/abandonar uma partida em curso para sair do jogo a qualquer momento.
+
+**US16** — Como utilizador, quero partilhar o resultado da minha partida nas redes sociais para mostrar a minha vitória aos amigos.
