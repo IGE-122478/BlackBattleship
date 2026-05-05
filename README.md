@@ -38,7 +38,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US04** — Como utilizador, quero criar um link de partida e enviá-lo a um amigo para podermos jogar online um contra o outro.
 
-**US05** — Como utilizador, quero escolher quem joga primeiro.
+**US05** — Como utilizador, quero aceder às definições do modo de jogo "Player vs Robot".
 
 **US06** — Como utilizador, quero ter a opção de posicionar os barcos de forma aleatória para começar a jogar mais rapidamente.
 
