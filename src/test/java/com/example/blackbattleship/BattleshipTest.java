@@ -163,4 +163,22 @@ public class BattleshipTest {
                         || pageSource.contains("Babbaloo") || pageSource.contains("Cpt"),
                 "A tabela de classificação não apareceu");
     }
+
+    /**
+     * US10 — Como utilizador, quero participar num campeonato/torneio.
+     */
+    @Test
+    public void US10_createTournament() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Create tournament"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.createTournamentButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.createTournamentButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de criação de torneio
+        assertTrue(driver.getCurrentUrl().contains("tournament"),
+                "Não navegou para a página de criação de torneio. URL atual: " + driver.getCurrentUrl());
+    }
+
 }
