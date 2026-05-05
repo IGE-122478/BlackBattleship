@@ -87,4 +87,34 @@ public class BattleshipTest {
         assertTrue(driver.getCurrentUrl().contains("game-guides"),
                 "A página dos guias do jogo não abriu. URL atual: " + driver.getCurrentUrl());
     }
+
+    /**
+     * US03 — Como utilizador, quero jogar contra um robot para treinar sem precisar de outro jogador.
+     */
+    @Test
+    public void US03_playVsRobot() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Play vs robot"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // Espera pelo diálogo de nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        assertTrue(nicknameDialog.dialogTitle.isDisplayed(), "Diálogo de nickname não apareceu");
+
+        // Preenche o nickname
+        nicknameDialog.nicknameInput.sendKeys("RobotPlayer");
+        Thread.sleep(1500);
+
+        // Clica em Continue
+        wait.until(ExpectedConditions.elementToBeClickable(nicknameDialog.continueButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nicknameDialog.continueButton);
+        Thread.sleep(4000);
+
+        // Verifica que saímos do diálogo (já entrámos no jogo contra o robot)
+        assertFalse(driver.getPageSource().contains("Who are you?"),
+                "Ainda estamos no diálogo de nickname - não entrámos no jogo");
+    }
 }
