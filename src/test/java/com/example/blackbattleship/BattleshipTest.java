@@ -221,8 +221,8 @@ public class BattleshipTest {
         String urlAtual = driver.getCurrentUrl();
         assertTrue(urlAtual.contains("merch.papergames") || urlAtual.contains("goodies"),
                 "Não foi aberta a página de Goodies. URL atual: " + urlAtual);
-=======
 
+    }
     /**
      * US09 — Como utilizador, quero consultar a tabela de classificação (leaderboard).
      */
