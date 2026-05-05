@@ -32,6 +32,7 @@ public class BattleshipHomePage {
     @FindBy(xpath = "//a[contains(@href,'match-history')]")
     public WebElement matchHistoryButton;
 
+
     // US05 - Engrenagem ao lado de "Play vs robot" (abre o Game Settings)
     @FindBy(xpath = "//span[contains(text(),'Play vs robot')]/following-sibling::button[.//*[@data-icon='gear']]")
     public WebElement playVsRobotSettingsButton;
@@ -47,6 +48,7 @@ public class BattleshipHomePage {
     // US08 - Botão Goodies (sidebar à esquerda)
     @FindBy(xpath = "//a[contains(@href,'goodies')] | //span[contains(text(),'Goodies')]/ancestor::a")
     public WebElement goodiesButton;
+
 
     public BattleshipHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);

@@ -145,6 +145,7 @@ public class BattleshipTest {
         assertEquals("FriendInviter", nicknameDialog.nicknameInput.getAttribute("value"),
                 "Nickname não foi escrito corretamente");
     }
+
     /**
      * US05 — Como utilizador, quero escolher quem joga primeiro.
      */
@@ -220,5 +221,96 @@ public class BattleshipTest {
         String urlAtual = driver.getCurrentUrl();
         assertTrue(urlAtual.contains("merch.papergames") || urlAtual.contains("goodies"),
                 "Não foi aberta a página de Goodies. URL atual: " + urlAtual);
+=======
+
+    /**
+     * US09 — Como utilizador, quero consultar a tabela de classificação (leaderboard).
+     */
+    @Test
+    public void US09_viewLeaderboard() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Faz scroll para baixo para ver o leaderboard
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
+        Thread.sleep(2000);
+
+        // Verifica que existem entradas de jogadores na página
+        String pageSource = driver.getPageSource();
+
+        // O leaderboard tem números (rankings) e pontuações
+        assertTrue(pageSource.contains("1330") || pageSource.contains("1285")
+                        || pageSource.contains("Babbaloo") || pageSource.contains("Cpt"),
+                "A tabela de classificação não apareceu");
+    }
+
+    /**
+     * US10 — Como utilizador, quero participar num campeonato/torneio.
+     */
+    @Test
+    public void US10_createTournament() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Create tournament"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.createTournamentButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.createTournamentButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de criação de torneio
+        assertTrue(driver.getCurrentUrl().contains("tournament"),
+                "Não navegou para a página de criação de torneio. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+
+     US11 — Como utilizador, quero verificar que o menu de definições abre e contém opções de configuração.*/
+    @Test
+    public void US11_openSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no ícone de Settings (engrenagem)
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.settingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.settingsButton);
+        Thread.sleep(2000);
+
+        // Verifica que o menu de Settings abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Settings") && pageSource.contains("Language"),
+                "Menu de definições não abriu corretamente");
+    }
+
+    /**
+     * US12 — Como utilizador, quero ver o histórico das minhas partidas.
+     */
+    @Test
+    public void US12_viewMatchHistory() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // 1. Faz login: clica em "Play vs robot" para iniciar o processo
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // 2. Preenche o nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        nicknameDialog.nicknameInput.sendKeys("HistoryTester");
+        Thread.sleep(1500);
+
+        // 3. Clica em Continue para ficar logado
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nicknameDialog.continueButton);
+        Thread.sleep(5000);
+
+        // 4. Navega diretamente para a página de histórico
+        driver.get("https://papergames.io/en/match-history");
+        Thread.sleep(4000);
+
+        // 5. Verifica que estamos na página de histórico
+        assertTrue(driver.getCurrentUrl().contains("match-history") || driver.getCurrentUrl().contains("history"),
+                "Não estamos na página de histórico. URL: " + driver.getCurrentUrl());
+
+        // 6. Verifica que a página tem conteúdo relacionado com histórico
+        String pageSource = driver.getPageSource().toLowerCase();
+        assertTrue(pageSource.contains("history") || pageSource.contains("match")
+                        || pageSource.contains("game") || pageSource.contains("histórico"),
+                "Página de histórico não carregou corretamente");
+
     }
 }

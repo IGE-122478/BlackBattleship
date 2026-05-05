@@ -38,19 +38,19 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US04** — Como utilizador, quero criar um link de partida e enviá-lo a um amigo para podermos jogar online um contra o outro.
 
-**US05** — Como utilizador, quero escolher quem joga primeiro.
+**US05** — Como utilizador, quero aceder às definições do modo de jogo "Player vs Robot".
 
-**US06** — Como utilizador, quero ter a opção de posicionar os barcos de forma aleatória para começar a jogar mais rapidamente.
+**US06** — Como utilizador, quero aceder à loja para comprar artigos virtuais.
 
-**US07** — Como jogador, quero clicar numa célula do tabuleiro adversário para disparar nessa posição.
+**US07** — Como utilizador, quero aceder à página de preços para conhecer os planos.
 
-**US08** — Como jogador, quero ver visualmente o resultado de cada tiro (acerto, falha, barco afundado) para saber o estado da partida.
+**US08** —  Como utilizador, quero aceder à secção Goodies para receber recompensas.
 
 **US09** — Como utilizador, quero consultar a tabela de classificação (leaderboard) para ver os melhores jogadores.
 
 **US10** — Como utilizador, quero participar num campeonato/torneio para competir contra vários adversários.
 
-**US11** — Como utilizador, quero alterar o idioma da interface para jogar na minha língua preferida.
+**US11** — Como utilizador, quero aceder às definições gerais.
 
 **US12** — Como utilizador, quero ver o histórico das minhas partidas para acompanhar a minha evolução.
 
