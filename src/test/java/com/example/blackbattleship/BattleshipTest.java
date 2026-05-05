@@ -180,5 +180,21 @@ public class BattleshipTest {
         assertTrue(driver.getCurrentUrl().contains("tournament"),
                 "Não navegou para a página de criação de torneio. URL atual: " + driver.getCurrentUrl());
     }
+    /**
 
+     US11 — Como utilizador, quero verificar que o menu de definições abre e contém opções de configuração.*/
+    @Test
+    public void US11_openSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no ícone de Settings (engrenagem)
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.settingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.settingsButton);
+        Thread.sleep(2000);
+
+        // Verifica que o menu de Settings abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Settings") && pageSource.contains("Language"),
+                "Menu de definições não abriu corretamente");
+    }
 }
