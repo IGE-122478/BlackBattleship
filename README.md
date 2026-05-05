@@ -50,7 +50,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US10** — Como utilizador, quero participar num campeonato/torneio para competir contra vários adversários.
 
-**US11** — Como utilizador, quero alterar o idioma da interface para jogar na minha língua preferida.
+**US11** — Como utilizador, quero aceder às definições gerais.
 
 **US12** — Como utilizador, quero ver o histórico das minhas partidas para acompanhar a minha evolução.
 
