@@ -179,7 +179,6 @@ public class BattleshipTest {
                 "Não navegou para a página Shop. URL atual: " + driver.getCurrentUrl());
     }
     /**
-
      US07 — Como utilizador, quero aceder à página de preços para conhecer os planos.*/
     @Test
     public void US07_accessPricing() throws InterruptedException {
@@ -193,5 +192,33 @@ public class BattleshipTest {
         // Verifica que navegou para a página de Pricing
         assertTrue(driver.getCurrentUrl().contains("pricing"),
                 "Não navegou para a página Pricing. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+     US08 — Como utilizador, quero aceder à secção Goodies para receber recompensas.*/
+    @Test
+    public void US08_accessGoodies() throws InterruptedException {
+        Thread.sleep(5000);
+
+        String originalWindow = driver.getWindowHandle();
+
+        // Clica no botão Goodies na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.goodiesButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.goodiesButton);
+        Thread.sleep(4000);
+
+        // O Goodies abre numa nova aba — muda para essa aba
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(2000);
+
+        // Verifica que estamos na página de merchandise (Goodies)
+        String urlAtual = driver.getCurrentUrl();
+        assertTrue(urlAtual.contains("merch.papergames") || urlAtual.contains("goodies"),
+                "Não foi aberta a página de Goodies. URL atual: " + urlAtual);
     }
 }
