@@ -197,4 +197,40 @@ public class BattleshipTest {
         assertTrue(pageSource.contains("Settings") && pageSource.contains("Language"),
                 "Menu de definições não abriu corretamente");
     }
+
+    /**
+     * US12 — Como utilizador, quero ver o histórico das minhas partidas.
+     */
+    @Test
+    public void US12_viewMatchHistory() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // 1. Faz login: clica em "Play vs robot" para iniciar o processo
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // 2. Preenche o nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        nicknameDialog.nicknameInput.sendKeys("HistoryTester");
+        Thread.sleep(1500);
+
+        // 3. Clica em Continue para ficar logado
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nicknameDialog.continueButton);
+        Thread.sleep(5000);
+
+        // 4. Navega diretamente para a página de histórico
+        driver.get("https://papergames.io/en/match-history");
+        Thread.sleep(4000);
+
+        // 5. Verifica que estamos na página de histórico
+        assertTrue(driver.getCurrentUrl().contains("match-history") || driver.getCurrentUrl().contains("history"),
+                "Não estamos na página de histórico. URL: " + driver.getCurrentUrl());
+
+        // 6. Verifica que a página tem conteúdo relacionado com histórico
+        String pageSource = driver.getPageSource().toLowerCase();
+        assertTrue(pageSource.contains("history") || pageSource.contains("match")
+                        || pageSource.contains("game") || pageSource.contains("histórico"),
+                "Página de histórico não carregou corretamente");
+    }
 }
