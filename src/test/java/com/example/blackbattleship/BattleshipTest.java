@@ -143,4 +143,24 @@ public class BattleshipTest {
         assertEquals("FriendInviter", nicknameDialog.nicknameInput.getAttribute("value"),
                 "Nickname não foi escrito corretamente");
     }
+
+    /**
+     * US09 — Como utilizador, quero consultar a tabela de classificação (leaderboard).
+     */
+    @Test
+    public void US09_viewLeaderboard() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Faz scroll para baixo para ver o leaderboard
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
+        Thread.sleep(2000);
+
+        // Verifica que existem entradas de jogadores na página
+        String pageSource = driver.getPageSource();
+
+        // O leaderboard tem números (rankings) e pontuações
+        assertTrue(pageSource.contains("1330") || pageSource.contains("1285")
+                        || pageSource.contains("Babbaloo") || pageSource.contains("Cpt"),
+                "A tabela de classificação não apareceu");
+    }
 }
