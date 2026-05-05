@@ -40,7 +40,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US05** — Como utilizador, quero aceder às definições do modo de jogo "Player vs Robot".
 
-**US06** — Como utilizador, quero ter a opção de posicionar os barcos de forma aleatória para começar a jogar mais rapidamente.
+**US06** — Como utilizador, quero aceder à loja para comprar artigos virtuais.
 
 **US07** — Como jogador, quero clicar numa célula do tabuleiro adversário para disparar nessa posição.
 
