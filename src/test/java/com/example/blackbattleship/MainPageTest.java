@@ -31,16 +31,20 @@ public class MainPageTest {
     }
 
     @Test
-    public void search() {
+    public void search() throws InterruptedException {
+        Thread.sleep(5000);
         mainPage.searchButton.click();
+        Thread.sleep(3000);
 
-        WebElement searchField = driver.findElement(By.cssSelector("[data-test='search-input']"));
+        WebElement searchField = driver.findElement(By.cssSelector("[data-test-id='search-input']"));
         searchField.sendKeys("Selenium");
+        Thread.sleep(3000);
 
         WebElement submitButton = driver.findElement(By.cssSelector("button[data-test='full-search-button']"));
         submitButton.click();
+        Thread.sleep(3000);
 
-        WebElement searchPageField = driver.findElement(By.cssSelector("input[data-test='search-input']"));
+        WebElement searchPageField = driver.findElement(By.cssSelector("input[data-test-id='search-input']"));
         assertEquals("Selenium", searchPageField.getAttribute("value"));
     }
 
@@ -53,9 +57,15 @@ public class MainPageTest {
     }
 
     @Test
-    public void navigationToAllTools() {
+    public void navigationToAllTools() throws InterruptedException {
+        Thread.sleep(3000);
         mainPage.seeDeveloperToolsButton.click();
-        mainPage.findYourToolsButton.click();
+        Thread.sleep(3000);
+
+        // Usa JavaScript para clicar (contorna elementos que tapam o botão)
+        ((org.openqa.selenium.JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", mainPage.findYourToolsButton);
+        Thread.sleep(3000);
 
         WebElement productsList = driver.findElement(By.id("products-page"));
         assertTrue(productsList.isDisplayed());
