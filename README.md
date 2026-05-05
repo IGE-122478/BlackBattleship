@@ -38,7 +38,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US04** — Como utilizador, quero criar um link de partida e enviá-lo a um amigo para podermos jogar online um contra o outro.
 
-**US05** — Como utilizador, quero posicionar os meus barcos no tabuleiro antes de iniciar a partida.
+**US05** — Como utilizador, quero escolher quem joga primeiro.
 
 **US06** — Como utilizador, quero ter a opção de posicionar os barcos de forma aleatória para começar a jogar mais rapidamente.
 
@@ -56,7 +56,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US13** — Como jogador, quero saber quando perco ou ganho a partida através de uma mensagem clara no ecrã.
 
-**US14** — Como utilizador, quero acederà página principal do jogo a partir de qualquer momento da navegação.
+**US14** — Como utilizador, quero aceder à páginas de amigos para conseguir visualizá-los.
 
 **US15** — Como utilizador, quero poder desistir/abandonar uma partida em curso para sair do jogo a qualquer momento.
 
