@@ -16,6 +16,7 @@ public class BattleshipTest {
     private WebDriver driver;
     private BattleshipHomePage homePage;
     private NicknameDialogPage nicknameDialog;
+    private GamePage gamePage;
     private WebDriverWait wait;
 
     @BeforeEach
@@ -27,6 +28,7 @@ public class BattleshipTest {
 
         homePage = new BattleshipHomePage(driver);
         nicknameDialog = new NicknameDialogPage(driver);
+        gamePage = new GamePage(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
@@ -145,6 +147,83 @@ public class BattleshipTest {
     }
 
     /**
+     * US05 — Como utilizador, quero escolher quem joga primeiro.
+     */
+    @Test
+    public void US05_openPlayVsRobotSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica na engrenagem ao lado de "Play vs robot"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotSettingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotSettingsButton);
+        Thread.sleep(3000);
+
+        // Verifica que o diálogo "Game settings" abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Game settings"),
+                "Diálogo de Game Settings não abriu");
+    }
+    /**
+     US06 — Como utilizador, quero aceder à loja para comprar artigos virtuais.
+     */
+    @Test
+    public void US06_accessShop() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Shop na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.shopButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.shopButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página da Shop
+        assertTrue(driver.getCurrentUrl().contains("shop"),
+                "Não navegou para a página Shop. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+     US07 — Como utilizador, quero aceder à página de preços para conhecer os planos.*/
+    @Test
+    public void US07_accessPricing() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Pricing na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.pricingButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.pricingButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de Pricing
+        assertTrue(driver.getCurrentUrl().contains("pricing"),
+                "Não navegou para a página Pricing. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+     US08 — Como utilizador, quero aceder à secção Goodies para receber recompensas.*/
+    @Test
+    public void US08_accessGoodies() throws InterruptedException {
+        Thread.sleep(5000);
+
+        String originalWindow = driver.getWindowHandle();
+
+        // Clica no botão Goodies na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.goodiesButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.goodiesButton);
+        Thread.sleep(4000);
+
+        // O Goodies abre numa nova aba — muda para essa aba
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(2000);
+
+        // Verifica que estamos na página de merchandise (Goodies)
+        String urlAtual = driver.getCurrentUrl();
+        assertTrue(urlAtual.contains("merch.papergames") || urlAtual.contains("goodies"),
+                "Não foi aberta a página de Goodies. URL atual: " + urlAtual);
+=======
+
+    /**
      * US09 — Como utilizador, quero consultar a tabela de classificação (leaderboard).
      */
     @Test
@@ -232,5 +311,6 @@ public class BattleshipTest {
         assertTrue(pageSource.contains("history") || pageSource.contains("match")
                         || pageSource.contains("game") || pageSource.contains("histórico"),
                 "Página de histórico não carregou corretamente");
+
     }
 }
