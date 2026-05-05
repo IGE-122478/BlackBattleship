@@ -20,6 +20,18 @@ public class BattleshipHomePage {
     @FindBy(xpath = "//a[contains(@href,'/docs/game-guides/')]")
     public WebElement gameGuidesButton;
 
+    // US10 - Create tournament
+    @FindBy(xpath = "//a[contains(@href,'create-tournament')]")
+    public WebElement createTournamentButton;
+
+    // US11 - Settings (engrenagem no canto superior direito)
+    @FindBy(css = "button[mattooltip='Settings']")
+    public WebElement settingsButton;
+
+    // US12 - Match History
+    @FindBy(xpath = "//a[contains(@href,'match-history')]")
+    public WebElement matchHistoryButton;
+
     public BattleshipHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
