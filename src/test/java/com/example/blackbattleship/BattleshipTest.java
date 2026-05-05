@@ -178,4 +178,20 @@ public class BattleshipTest {
         assertTrue(driver.getCurrentUrl().contains("shop"),
                 "Não navegou para a página Shop. URL atual: " + driver.getCurrentUrl());
     }
+    /**
+
+     US07 — Como utilizador, quero aceder à página de preços para conhecer os planos.*/
+    @Test
+    public void US07_accessPricing() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Pricing na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.pricingButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.pricingButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de Pricing
+        assertTrue(driver.getCurrentUrl().contains("pricing"),
+                "Não navegou para a página Pricing. URL atual: " + driver.getCurrentUrl());
+    }
 }
