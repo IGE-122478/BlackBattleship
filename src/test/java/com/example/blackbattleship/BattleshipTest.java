@@ -16,6 +16,7 @@ public class BattleshipTest {
     private WebDriver driver;
     private BattleshipHomePage homePage;
     private NicknameDialogPage nicknameDialog;
+    private GamePage gamePage;
     private WebDriverWait wait;
 
     @BeforeEach
@@ -27,6 +28,7 @@ public class BattleshipTest {
 
         homePage = new BattleshipHomePage(driver);
         nicknameDialog = new NicknameDialogPage(driver);
+        gamePage = new GamePage(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
@@ -142,5 +144,22 @@ public class BattleshipTest {
         // Verifica que o nickname foi escrito corretamente
         assertEquals("FriendInviter", nicknameDialog.nicknameInput.getAttribute("value"),
                 "Nickname não foi escrito corretamente");
+    }
+    /**
+     * US05 — Como utilizador, quero escolher quem joga primeiro.
+     */
+    @Test
+    public void US05_openPlayVsRobotSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica na engrenagem ao lado de "Play vs robot"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotSettingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotSettingsButton);
+        Thread.sleep(3000);
+
+        // Verifica que o diálogo "Game settings" abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Game settings"),
+                "Diálogo de Game Settings não abriu");
     }
 }
