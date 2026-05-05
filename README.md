@@ -42,7 +42,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US06** — Como utilizador, quero aceder à loja para comprar artigos virtuais.
 
-**US07** — Como jogador, quero clicar numa célula do tabuleiro adversário para disparar nessa posição.
+**US07** — Como utilizador, quero aceder à página de preços para conhecer os planos.
 
 **US08** — Como jogador, quero ver visualmente o resultado de cada tiro (acerto, falha, barco afundado) para saber o estado da partida.
 
