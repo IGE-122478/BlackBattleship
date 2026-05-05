@@ -117,4 +117,30 @@ public class BattleshipTest {
         assertFalse(driver.getPageSource().contains("Who are you?"),
                 "Ainda estamos no diálogo de nickname - não entrámos no jogo");
     }
+
+    /**
+     * US04 — Como utilizador, quero criar um link de partida e enviá-lo a um amigo.
+     */
+    @Test
+    public void US04_playWithFriend() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Play with a friend"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playWithFriendButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playWithFriendButton);
+        Thread.sleep(3000);
+
+        // Aparece o diálogo do nickname (passo necessário antes de criar o link da partida)
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        assertTrue(nicknameDialog.dialogTitle.isDisplayed(),
+                "Diálogo de nickname não apareceu ao clicar em Play with a friend");
+
+        // Preenche o nickname
+        nicknameDialog.nicknameInput.sendKeys("FriendInviter");
+        Thread.sleep(1500);
+
+        // Verifica que o nickname foi escrito corretamente
+        assertEquals("FriendInviter", nicknameDialog.nicknameInput.getAttribute("value"),
+                "Nickname não foi escrito corretamente");
+    }
 }
