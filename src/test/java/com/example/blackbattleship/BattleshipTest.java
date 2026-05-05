@@ -58,4 +58,33 @@ public class BattleshipTest {
 
         assertEquals("TestUser123", nicknameDialog.nicknameInput.getAttribute("value"));
     }
+
+    /**
+     * US02 — Como utilizador, quero ver as instruções/regras do jogo para perceber como jogar.
+     */
+    @Test
+    public void US02_viewGameGuides() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Espera até o botão estar visível
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.gameGuidesButton));
+
+        // Guarda a janela atual
+        String originalWindow = driver.getWindowHandle();
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.gameGuidesButton);
+        Thread.sleep(3000);
+
+        // O guia abre numa nova aba — muda para essa aba
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(2000);
+        assertTrue(driver.getCurrentUrl().contains("game-guides"),
+                "A página dos guias do jogo não abriu. URL atual: " + driver.getCurrentUrl());
+    }
 }
