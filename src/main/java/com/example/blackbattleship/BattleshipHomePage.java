@@ -36,6 +36,10 @@ public class BattleshipHomePage {
     @FindBy(xpath = "//span[contains(text(),'Play vs robot')]/following-sibling::button[.//*[@data-icon='gear']]")
     public WebElement playVsRobotSettingsButton;
 
+    // US06 - Botão Shop (sidebar à esquerda)
+    @FindBy(xpath = "//a[contains(@href,'/shop')] | //span[contains(text(),'Shop')]/ancestor::a")
+    public WebElement shopButton;
+
     public BattleshipHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

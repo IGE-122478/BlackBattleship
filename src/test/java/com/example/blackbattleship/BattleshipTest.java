@@ -162,4 +162,20 @@ public class BattleshipTest {
         assertTrue(pageSource.contains("Game settings"),
                 "Diálogo de Game Settings não abriu");
     }
+    /**
+     US06 — Como utilizador, quero aceder à loja para comprar artigos virtuais.
+     */
+    @Test
+    public void US06_accessShop() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Shop na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.shopButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.shopButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página da Shop
+        assertTrue(driver.getCurrentUrl().contains("shop"),
+                "Não navegou para a página Shop. URL atual: " + driver.getCurrentUrl());
+    }
 }
