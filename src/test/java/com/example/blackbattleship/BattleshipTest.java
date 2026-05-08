@@ -333,4 +333,160 @@ public class BattleshipTest {
                 "Página de histórico não carregou corretamente");
 
     }
+
+    @Test
+    public void US13_viewTermsAndConditions() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar em "Terms"
+        footer.clickTerms();
+        Thread.sleep(3000);
+
+        // Verificação: URL contém "terms"
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("URL após clicar em Terms: " + currentUrl);
+
+        assertTrue(
+                currentUrl.toLowerCase().contains("terms"),
+                "Após clicar em Terms, o URL deveria conter 'terms'. URL atual: " + currentUrl
+        );
+    }
+
+    /**
+
+     US14 — Como utilizador, quero aceder à página Developers para conhecer
+     as ferramentas disponíveis para programadores na plataforma.*/
+    @Test
+    public void US14_viewDevelopersPage() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Guardar a janela original (Developers pode abrir em nova aba)
+        String originalWindow = driver.getWindowHandle();
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar em "Developers"
+        footer.clickDevelopers();
+        Thread.sleep(4000);
+
+        // Procurar a aba/janela onde o Developers abriu
+        // (pode abrir em nova aba ou na mesma — tratamos os dois casos)
+        String developersUrl = null;
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            String url = driver.getCurrentUrl();
+            if (url.contains("developers")) {
+                developersUrl = url;
+                break;
+            }
+        }
+
+        // Se não abriu em nova aba, verifica o URL atual da janela original
+        if (developersUrl == null) {
+            driver.switchTo().window(originalWindow);
+            developersUrl = driver.getCurrentUrl();
+        }
+
+        System.out.println("URL após clicar em Developers: " + developersUrl);
+
+        // Verificação: o URL contém "developers"
+        assertTrue(
+                developersUrl.toLowerCase().contains("developers"),
+                "Após clicar em Developers, o URL deveria conter 'developers'. URL atual: " + developersUrl
+        );
+    }
+
+    /**
+
+     US15 — Como utilizador, quero ver o formulário de login com os campos de
+     email e password disponíveis para poder iniciar sessão na plataforma.*/
+    @Test
+    public void US15_viewLoginForm() throws InterruptedException {
+        Thread.sleep(5000);
+
+        LoginDialogPage loginPage = new LoginDialogPage(driver);
+
+        // Clicar no botão LogIn
+        loginPage.clickLogin();
+        Thread.sleep(3000);
+
+        // Verificação 1: campo de email está visível
+        assertTrue(
+                loginPage.isEmailFieldVisible(),
+                "O campo de email deveria estar visível no diálogo de login"
+        );
+
+        // Verificação 2: campo de password está visível
+        assertTrue(
+                loginPage.isPasswordFieldVisible(),
+                "O campo de password deveria estar visível no diálogo de login"
+        );
+
+        // Verificação 3: opção de login com Google está presente
+        assertTrue(
+                loginPage.hasGoogleLoginOption(),
+                "A opção 'Continue with Google' deveria estar visível no diálogo de login"
+        );
+
+        System.out.println("✅ Diálogo de login aberto com email, password e opção Google");
+    }
+
+    /**
+
+     US16 — Como utilizador, quero aceder ao servidor de Discord do PaperGames
+     para interagir com a comunidade de jogadores.*/
+    @Test
+    public void US16_accessDiscordServer() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Guardar a janela original (Discord abre em nova aba)
+        String originalWindow = driver.getWindowHandle();
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar no ícone Discord
+        footer.clickDiscord();
+        Thread.sleep(4000);
+
+        // Procurar a aba/janela onde o Discord abriu
+        String discordUrl = null;
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            String url = driver.getCurrentUrl();
+            if (url.contains("discord")) {
+                discordUrl = url;
+                break;
+            }
+        }
+
+        // Fallback: se não abriu em nova aba, verifica o URL atual da janela original
+        if (discordUrl == null) {
+            driver.switchTo().window(originalWindow);
+            discordUrl = driver.getCurrentUrl();
+        }
+
+        System.out.println("URL após clicar em Discord: " + discordUrl);
+
+        // Verificação: o URL contém "discord" (apanha discord.gg ou discord.com)
+        assertTrue(
+                discordUrl.toLowerCase().contains("discord"),
+                "Após clicar em Discord, o URL deveria conter 'discord'. URL atual: " + discordUrl
+        );
+    }
 }
