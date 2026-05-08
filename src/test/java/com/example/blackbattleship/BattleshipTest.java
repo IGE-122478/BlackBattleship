@@ -386,4 +386,39 @@ public class BattleshipTest {
                 "Após clicar em Developers, o URL deveria conter 'developers'. URL atual: " + developersUrl
         );
     }
+
+    /**
+
+     US15 — Como utilizador, quero ver o formulário de login com os campos de
+     email e password disponíveis para poder iniciar sessão na plataforma.*/
+    @Test
+    public void US15_viewLoginForm() throws InterruptedException {
+        Thread.sleep(5000);
+
+        LoginDialogPage loginPage = new LoginDialogPage(driver);
+
+        // Clicar no botão LogIn
+        loginPage.clickLogin();
+        Thread.sleep(3000);
+
+        // Verificação 1: campo de email está visível
+        assertTrue(
+                loginPage.isEmailFieldVisible(),
+                "O campo de email deveria estar visível no diálogo de login"
+        );
+
+        // Verificação 2: campo de password está visível
+        assertTrue(
+                loginPage.isPasswordFieldVisible(),
+                "O campo de password deveria estar visível no diálogo de login"
+        );
+
+        // Verificação 3: opção de login com Google está presente
+        assertTrue(
+                loginPage.hasGoogleLoginOption(),
+                "A opção 'Continue with Google' deveria estar visível no diálogo de login"
+        );
+
+        System.out.println("✅ Diálogo de login aberto com email, password e opção Google");
+    }
 }
