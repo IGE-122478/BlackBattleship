@@ -58,6 +58,6 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US14** — Como utilizador, quero aceder à página Developers para conhecer as ferramentas disponíveis para programadores na plataforma.
 
-**US15** —  Como utilizador, quero ver as opções de login disponíveis para escolher a forma mais conveniente de criar conta.
+**US15** —  Como utilizador, quero ver o formulário de login com os campos de email e password disponíveis para poder iniciar sessão na plataforma.
 
 **US16** — Como utilizador, quero aceder ao servidor de Discord do PaperGames para interagir com a comunidade de jogadores.
