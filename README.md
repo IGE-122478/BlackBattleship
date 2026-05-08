@@ -54,10 +54,10 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US12** — Como utilizador, quero ver o histórico das minhas partidas para acompanhar a minha evolução.
 
-**US13** — Como jogador, quero saber quando perco ou ganho a partida através de uma mensagem clara no ecrã.
+**US13** — Como utilizador, quero aceder aos Termos e Condições para conhecer as regras de utilização da plataforma.
 
-**US14** — Como utilizador, quero aceder à páginas de amigos para conseguir visualizá-los.
+**US14** — Como utilizador, quero aceder à página About para saber mais sobre a equipa e a missão do PaperGames.
 
-**US15** — Como utilizador, quero poder desistir/abandonar uma partida em curso para sair do jogo a qualquer momento.
+**US15** —  Como utilizador, quero ver as opções de login disponíveis para escolher a forma mais conveniente de criar conta.
 
-**US16** — Como utilizador, quero partilhar o resultado da minha partida nas redes sociais para mostrar a minha vitória aos amigos.
+**US16** — Como utilizador, quero aceder ao servidor de Discord do PaperGames para interagir com a comunidade de jogadores.
