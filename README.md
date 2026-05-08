@@ -22,3 +22,42 @@ para validação funcional do jogo de Batalha Naval online.
 - `src/main/java` — Page Objects (classes que representam páginas web)
 - `src/test/java` — Classes de teste
 - `reports/` — Relatórios de execução de testes
+
+## Product Backlog — Battleship.io
+
+Product backlog (Scrum User Stories) para o jogo Battleship.io,
+elaborado a partir da consulta direta das páginas do jogo.
+
+### User Stories
+
+**US01** — Como visitante, quero criar um nickname para poder ser identificado durante o jogo.
+
+**US02** — Como utilizador, quero ver as instruções/regras do jogo para perceber como jogar.
+
+**US03** — Como utilizador, quero jogar contra um robot para treinar sem precisar de outro jogador.
+
+**US04** — Como utilizador, quero criar um link de partida e enviá-lo a um amigo para podermos jogar online um contra o outro.
+
+**US05** — Como utilizador, quero aceder às definições do modo de jogo "Player vs Robot".
+
+**US06** — Como utilizador, quero aceder à loja para comprar artigos virtuais.
+
+**US07** — Como utilizador, quero aceder à página de preços para conhecer os planos.
+
+**US08** —  Como utilizador, quero aceder à secção Goodies para receber recompensas.
+
+**US09** — Como utilizador, quero consultar a tabela de classificação (leaderboard) para ver os melhores jogadores.
+
+**US10** — Como utilizador, quero participar num campeonato/torneio para competir contra vários adversários.
+
+**US11** — Como utilizador, quero aceder às definições gerais.
+
+**US12** — Como utilizador, quero ver o histórico das minhas partidas para acompanhar a minha evolução.
+
+**US13** — Como jogador, quero saber quando perco ou ganho a partida através de uma mensagem clara no ecrã.
+
+**US14** — Como utilizador, quero aceder à páginas de amigos para conseguir visualizá-los.
+
+**US15** — Como utilizador, quero poder desistir/abandonar uma partida em curso para sair do jogo a qualquer momento.
+
+**US16** — Como utilizador, quero partilhar o resultado da minha partida nas redes sociais para mostrar a minha vitória aos amigos.

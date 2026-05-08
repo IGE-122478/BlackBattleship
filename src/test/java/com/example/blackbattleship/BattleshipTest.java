@@ -1,0 +1,316 @@
+package com.example.blackbattleship;
+
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BattleshipTest {
+
+    private WebDriver driver;
+    private BattleshipHomePage homePage;
+    private NicknameDialogPage nicknameDialog;
+    private GamePage gamePage;
+    private WebDriverWait wait;
+
+    @BeforeEach
+    public void setUp() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://papergames.io/en/battleship");
+
+        homePage = new BattleshipHomePage(driver);
+        nicknameDialog = new NicknameDialogPage(driver);
+        gamePage = new GamePage(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    /**
+     * US01 — Como visitante, quero criar um nickname para poder ser identificado durante o jogo.
+     */
+    @Test
+    public void US01_createNickname() throws InterruptedException {
+        Thread.sleep(5000); // espera que a página carregue completamente
+
+        // Espera até o botão estar visível e clicável
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // Espera pelo diálogo de nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        assertTrue(nicknameDialog.dialogTitle.isDisplayed(), "Diálogo de nickname não apareceu");
+
+        nicknameDialog.nicknameInput.sendKeys("TestUser123");
+        Thread.sleep(1000);
+
+        assertEquals("TestUser123", nicknameDialog.nicknameInput.getAttribute("value"));
+    }
+
+    /**
+     * US02 — Como utilizador, quero ver as instruções/regras do jogo para perceber como jogar.
+     */
+    @Test
+    public void US02_viewGameGuides() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Espera até o botão estar visível
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.gameGuidesButton));
+
+        // Guarda a janela atual
+        String originalWindow = driver.getWindowHandle();
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.gameGuidesButton);
+        Thread.sleep(3000);
+
+        // O guia abre numa nova aba — muda para essa aba
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(2000);
+        assertTrue(driver.getCurrentUrl().contains("game-guides"),
+                "A página dos guias do jogo não abriu. URL atual: " + driver.getCurrentUrl());
+    }
+
+    /**
+     * US03 — Como utilizador, quero jogar contra um robot para treinar sem precisar de outro jogador.
+     */
+    @Test
+    public void US03_playVsRobot() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Play vs robot"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // Espera pelo diálogo de nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        assertTrue(nicknameDialog.dialogTitle.isDisplayed(), "Diálogo de nickname não apareceu");
+
+        // Preenche o nickname
+        nicknameDialog.nicknameInput.sendKeys("RobotPlayer");
+        Thread.sleep(1500);
+
+        // Clica em Continue
+        wait.until(ExpectedConditions.elementToBeClickable(nicknameDialog.continueButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nicknameDialog.continueButton);
+        Thread.sleep(4000);
+
+        // Verifica que saímos do diálogo (já entrámos no jogo contra o robot)
+        assertFalse(driver.getPageSource().contains("Who are you?"),
+                "Ainda estamos no diálogo de nickname - não entrámos no jogo");
+    }
+
+    /**
+     * US04 — Como utilizador, quero criar um link de partida e enviá-lo a um amigo.
+     */
+    @Test
+    public void US04_playWithFriend() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Play with a friend"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playWithFriendButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playWithFriendButton);
+        Thread.sleep(3000);
+
+        // Aparece o diálogo do nickname (passo necessário antes de criar o link da partida)
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        assertTrue(nicknameDialog.dialogTitle.isDisplayed(),
+                "Diálogo de nickname não apareceu ao clicar em Play with a friend");
+
+        // Preenche o nickname
+        nicknameDialog.nicknameInput.sendKeys("FriendInviter");
+        Thread.sleep(1500);
+
+        // Verifica que o nickname foi escrito corretamente
+        assertEquals("FriendInviter", nicknameDialog.nicknameInput.getAttribute("value"),
+                "Nickname não foi escrito corretamente");
+    }
+
+    /**
+     * US05 — Como utilizador, quero escolher quem joga primeiro.
+     */
+    @Test
+    public void US05_openPlayVsRobotSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica na engrenagem ao lado de "Play vs robot"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotSettingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotSettingsButton);
+        Thread.sleep(3000);
+
+        // Verifica que o diálogo "Game settings" abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Game settings"),
+                "Diálogo de Game Settings não abriu");
+    }
+    /**
+     US06 — Como utilizador, quero aceder à loja para comprar artigos virtuais.
+     */
+    @Test
+    public void US06_accessShop() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Shop na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.shopButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.shopButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página da Shop
+        assertTrue(driver.getCurrentUrl().contains("shop"),
+                "Não navegou para a página Shop. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+     US07 — Como utilizador, quero aceder à página de preços para conhecer os planos.*/
+    @Test
+    public void US07_accessPricing() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no botão Pricing na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.pricingButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.pricingButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de Pricing
+        assertTrue(driver.getCurrentUrl().contains("pricing"),
+                "Não navegou para a página Pricing. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+     US08 — Como utilizador, quero aceder à secção Goodies para receber recompensas.*/
+    @Test
+    public void US08_accessGoodies() throws InterruptedException {
+        Thread.sleep(5000);
+
+        String originalWindow = driver.getWindowHandle();
+
+        // Clica no botão Goodies na sidebar
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.goodiesButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.goodiesButton);
+        Thread.sleep(4000);
+
+        // O Goodies abre numa nova aba — muda para essa aba
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        Thread.sleep(2000);
+
+        // Verifica que estamos na página de merchandise (Goodies)
+        String urlAtual = driver.getCurrentUrl();
+        assertTrue(urlAtual.contains("merch.papergames") || urlAtual.contains("goodies"),
+                "Não foi aberta a página de Goodies. URL atual: " + urlAtual);
+
+    }
+    /**
+     * US09 — Como utilizador, quero consultar a tabela de classificação (leaderboard).
+     */
+    @Test
+    public void US09_viewLeaderboard() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Faz scroll para baixo para ver o leaderboard
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
+        Thread.sleep(2000);
+
+        // Verifica que existem entradas de jogadores na página
+        String pageSource = driver.getPageSource();
+
+        // O leaderboard tem números (rankings) e pontuações
+        assertTrue(pageSource.contains("1330") || pageSource.contains("1285")
+                        || pageSource.contains("Babbaloo") || pageSource.contains("Cpt"),
+                "A tabela de classificação não apareceu");
+    }
+
+    /**
+     * US10 — Como utilizador, quero participar num campeonato/torneio.
+     */
+    @Test
+    public void US10_createTournament() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica em "Create tournament"
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.createTournamentButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.createTournamentButton);
+        Thread.sleep(3000);
+
+        // Verifica que navegou para a página de criação de torneio
+        assertTrue(driver.getCurrentUrl().contains("tournament"),
+                "Não navegou para a página de criação de torneio. URL atual: " + driver.getCurrentUrl());
+    }
+    /**
+
+     US11 — Como utilizador, quero verificar que o menu de definições abre e contém opções de configuração.*/
+    @Test
+    public void US11_openSettings() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // Clica no ícone de Settings (engrenagem)
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.settingsButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.settingsButton);
+        Thread.sleep(2000);
+
+        // Verifica que o menu de Settings abriu
+        String pageSource = driver.getPageSource();
+        assertTrue(pageSource.contains("Settings") && pageSource.contains("Language"),
+                "Menu de definições não abriu corretamente");
+    }
+
+    /**
+     * US12 — Como utilizador, quero ver o histórico das minhas partidas.
+     */
+    @Test
+    public void US12_viewMatchHistory() throws InterruptedException {
+        Thread.sleep(5000);
+
+        // 1. Faz login: clica em "Play vs robot" para iniciar o processo
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.playVsRobotButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePage.playVsRobotButton);
+        Thread.sleep(3000);
+
+        // 2. Preenche o nickname
+        wait.until(ExpectedConditions.visibilityOf(nicknameDialog.dialogTitle));
+        nicknameDialog.nicknameInput.sendKeys("HistoryTester");
+        Thread.sleep(1500);
+
+        // 3. Clica em Continue para ficar logado
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nicknameDialog.continueButton);
+        Thread.sleep(5000);
+
+        // 4. Navega diretamente para a página de histórico
+        driver.get("https://papergames.io/en/match-history");
+        Thread.sleep(4000);
+
+        // 5. Verifica que estamos na página de histórico
+        assertTrue(driver.getCurrentUrl().contains("match-history") || driver.getCurrentUrl().contains("history"),
+                "Não estamos na página de histórico. URL: " + driver.getCurrentUrl());
+
+        // 6. Verifica que a página tem conteúdo relacionado com histórico
+        String pageSource = driver.getPageSource().toLowerCase();
+        assertTrue(pageSource.contains("history") || pageSource.contains("match")
+                        || pageSource.contains("game") || pageSource.contains("histórico"),
+                "Página de histórico não carregou corretamente");
+
+    }
+}
