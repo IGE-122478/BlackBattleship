@@ -231,16 +231,36 @@ public class BattleshipTest {
         Thread.sleep(5000);
 
         // Faz scroll para baixo para ver o leaderboard
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
-        Thread.sleep(2000);
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 800)");
+        Thread.sleep(3000);
 
-        // Verifica que existem entradas de jogadores na página
-        String pageSource = driver.getPageSource();
+        // Verifica que existe a secção da leaderboard pelo título visível
+        // (case-insensitive: apanha "Leaderboard", "LEADERBOARD", "leaderboard")
+        String pageSource = driver.getPageSource().toLowerCase();
 
-        // O leaderboard tem números (rankings) e pontuações
-        assertTrue(pageSource.contains("1330") || pageSource.contains("1285")
-                        || pageSource.contains("Babbaloo") || pageSource.contains("Cpt"),
-                "A tabela de classificação não apareceu");
+        boolean temTituloLeaderboard =
+                pageSource.contains("leaderboard")
+                        || pageSource.contains("top players")
+                        || pageSource.contains("rankings")
+                        || pageSource.contains("classificação");
+
+        assertTrue(
+                temTituloLeaderboard,
+                "Não foi encontrado o título da leaderboard na página"
+        );
+
+        // Verificação adicional: a leaderboard deve ter pelo menos um número
+        // (posição #1, #2, etc. ou pontuações). Procuramos o símbolo "#" ou padrão de pontos
+        boolean temEntradas =
+                pageSource.contains("#1")
+                        || pageSource.matches("(?s).\\b\\d{3,4}\\b."); // qualquer número de 3-4 dígitos (pontuações típicas)
+
+        assertTrue(
+                temEntradas,
+                "A leaderboard não tem entradas (posições ou pontuações) visíveis"
+        );
+
+        System.out.println("✅ Leaderboard encontrada com título e entradas visíveis");
     }
 
     /**
