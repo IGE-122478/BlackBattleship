@@ -313,4 +313,28 @@ public class BattleshipTest {
                 "Página de histórico não carregou corretamente");
 
     }
+
+    @Test
+    public void US13_viewTermsAndConditions() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar em "Terms"
+        footer.clickTerms();
+        Thread.sleep(3000);
+
+        // Verificação: URL contém "terms"
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("URL após clicar em Terms: " + currentUrl);
+
+        assertTrue(
+                currentUrl.toLowerCase().contains("terms"),
+                "Após clicar em Terms, o URL deveria conter 'terms'. URL atual: " + currentUrl
+        );
+    }
 }
