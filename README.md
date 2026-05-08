@@ -56,7 +56,7 @@ elaborado a partir da consulta direta das páginas do jogo.
 
 **US13** — Como utilizador, quero aceder aos Termos e Condições para conhecer as regras de utilização da plataforma.
 
-**US14** — Como utilizador, quero aceder à página About para saber mais sobre a equipa e a missão do PaperGames.
+**US14** — Como utilizador, quero aceder à página Developers para conhecer as ferramentas disponíveis para programadores na plataforma.
 
 **US15** —  Como utilizador, quero ver as opções de login disponíveis para escolher a forma mais conveniente de criar conta.
 
