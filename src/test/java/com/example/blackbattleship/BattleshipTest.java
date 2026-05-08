@@ -337,4 +337,53 @@ public class BattleshipTest {
                 "Após clicar em Terms, o URL deveria conter 'terms'. URL atual: " + currentUrl
         );
     }
+
+    /**
+
+     US14 — Como utilizador, quero aceder à página Developers para conhecer
+     as ferramentas disponíveis para programadores na plataforma.*/
+    @Test
+    public void US14_viewDevelopersPage() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Guardar a janela original (Developers pode abrir em nova aba)
+        String originalWindow = driver.getWindowHandle();
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar em "Developers"
+        footer.clickDevelopers();
+        Thread.sleep(4000);
+
+        // Procurar a aba/janela onde o Developers abriu
+        // (pode abrir em nova aba ou na mesma — tratamos os dois casos)
+        String developersUrl = null;
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            String url = driver.getCurrentUrl();
+            if (url.contains("developers")) {
+                developersUrl = url;
+                break;
+            }
+        }
+
+        // Se não abriu em nova aba, verifica o URL atual da janela original
+        if (developersUrl == null) {
+            driver.switchTo().window(originalWindow);
+            developersUrl = driver.getCurrentUrl();
+        }
+
+        System.out.println("URL após clicar em Developers: " + developersUrl);
+
+        // Verificação: o URL contém "developers"
+        assertTrue(
+                developersUrl.toLowerCase().contains("developers"),
+                "Após clicar em Developers, o URL deveria conter 'developers'. URL atual: " + developersUrl
+        );
+    }
 }

@@ -9,18 +9,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+/**
+ * Page Object para o footer do PaperGames.
+ * Contém os links legais (Terms), de programadores (Developers)
+ * e ícones de redes sociais (Discord).
+ * Reutilizado pelos testes US13, US14 e US16.
+ */
 public class FooterPage {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    // Terms: link com texto "Terms" (case-insensitive via translate)
     private final By termsLink = By.xpath(
             "//a[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'terms')]"
     );
-    private final By aboutLink = By.xpath(
-            "//a[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'about')]"
-    );
 
+    // Developers: link aponta para developers.papergames.io
+    private final By developersLink = By.xpath("//a[contains(@href,'developers.papergames.io')]");
+
+    // Discord: link aponta para discord.gg ou discord.com
     private final By discordLink = By.xpath("//a[contains(@href,'discord')]");
 
     public FooterPage(WebDriver driver) {
@@ -40,9 +48,9 @@ public class FooterPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", link);
     }
 
-    /** Clica no link "About" do footer usando JS click. */
-    public void clickAbout() {
-        WebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(aboutLink));
+    /** Clica no link "Developers" do footer usando JS click. */
+    public void clickDevelopers() {
+        WebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(developersLink));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", link);
     }
 
