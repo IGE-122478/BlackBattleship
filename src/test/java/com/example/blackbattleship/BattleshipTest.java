@@ -421,4 +421,52 @@ public class BattleshipTest {
 
         System.out.println("✅ Diálogo de login aberto com email, password e opção Google");
     }
+
+    /**
+
+     US16 — Como utilizador, quero aceder ao servidor de Discord do PaperGames
+     para interagir com a comunidade de jogadores.*/
+    @Test
+    public void US16_accessDiscordServer() throws InterruptedException {
+        Thread.sleep(5000);
+
+        FooterPage footer = new FooterPage(driver);
+
+        // Guardar a janela original (Discord abre em nova aba)
+        String originalWindow = driver.getWindowHandle();
+
+        // Scroll até ao fundo para o footer ficar visível
+        footer.scrollToFooter();
+        Thread.sleep(2000);
+
+        // Clicar no ícone Discord
+        footer.clickDiscord();
+        Thread.sleep(4000);
+
+        // Procurar a aba/janela onde o Discord abriu
+        String discordUrl = null;
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            String url = driver.getCurrentUrl();
+            if (url.contains("discord")) {
+                discordUrl = url;
+                break;
+            }
+        }
+
+        // Fallback: se não abriu em nova aba, verifica o URL atual da janela original
+        if (discordUrl == null) {
+            driver.switchTo().window(originalWindow);
+            discordUrl = driver.getCurrentUrl();
+        }
+
+        System.out.println("URL após clicar em Discord: " + discordUrl);
+
+        // Verificação: o URL contém "discord" (apanha discord.gg ou discord.com)
+        assertTrue(
+                discordUrl.toLowerCase().contains("discord"),
+                "Após clicar em Discord, o URL deveria conter 'discord'. URL atual: " + discordUrl
+        );
+    }
 }
