@@ -48,6 +48,7 @@
             <scope>test</scope>
         </dependency>
 
+
         <!-- Allure JUnit 5 integration -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -103,4 +104,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
