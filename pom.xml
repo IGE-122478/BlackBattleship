@@ -55,11 +55,19 @@
         </dependency>
 
         <!-- WebDriverManager -->
+
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.9.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+
+        
 
         <!-- Allure JUnit5 -->
         <dependency>
