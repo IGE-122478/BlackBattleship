@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author TestSuite_122478
  */
+
 public class UserStory1test {
 
     /** Instância do WebDriver partilhada pelos testes. */

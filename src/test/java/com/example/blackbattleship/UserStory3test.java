@@ -63,6 +63,14 @@ public class UserStory3test {
         page.clicarPlayVsBot();
         Thread.sleep(2000);
 
+        // Preencher nickname se o diálogo aparecer
+        if (page.nicknameDialogVisivel()) {
+            page.preencherNickname("Goncalo");
+            Thread.sleep(500);
+            page.clicarContinue();
+            Thread.sleep(2000);
+        }
+
         // Verificar que o URL mudou (jogo iniciado)
         String url = page.obterUrlAtual();
         assertNotNull(url, "O URL após iniciar o jogo não deve ser nulo");

@@ -2,6 +2,7 @@ package com.example.blackbattleship;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 /**
@@ -27,6 +28,12 @@ public class UserStory4 {
 
     /** Localizador do botão "Play vs Bot" (segundo botão). */
     private final By playVsBotButton = By.cssSelector(".w-100:nth-child(2) > .btn .flex-grow-1");
+
+    /** Localizador do campo de input para o nickname. */
+    private final By nicknameInput = By.cssSelector(".input-xl");
+
+    /** Localizador do botão de submissão "Continue". */
+    private final By continueButton = By.cssSelector("button[type='submit']");
 
     /**
      * Construtor da classe UserStory4.
@@ -81,6 +88,33 @@ public class UserStory4 {
      */
     public boolean playWithFriendVisivel() {
         return !driver.findElements(playWithFriendButton).isEmpty();
+    }
+
+    /**
+     * Verifica se o diálogo de nickname está visível na página.
+     *
+     * @return true se o campo de nickname estiver presente, false caso contrário
+     */
+    public boolean nicknameDialogVisivel() {
+        return !driver.findElements(nicknameInput).isEmpty();
+    }
+
+    /**
+     * Preenche o campo de nickname com o valor fornecido.
+     *
+     * @param nickname o nome de utilizador a inserir
+     */
+    public void preencherNickname(String nickname) {
+        WebElement input = driver.findElement(nicknameInput);
+        input.click();
+        input.sendKeys(nickname);
+    }
+
+    /**
+     * Clica no botão "Continue" para confirmar o nickname.
+     */
+    public void clicarContinue() {
+        driver.findElement(continueButton).click();
     }
 
     /**

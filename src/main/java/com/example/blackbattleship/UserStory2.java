@@ -20,7 +20,7 @@ public class UserStory2 {
     private final WebDriver driver;
 
     /** Localizador do link "Game guides" na barra lateral. */
-    private final By gameGuidesLink = By.cssSelector(".cdk-focused > .hide-if-collapsed");
+    private final By gameGuidesLink = By.cssSelector("a[href='/docs/game-guides/']");
 
     /**
      * Construtor da classe UserStory2.

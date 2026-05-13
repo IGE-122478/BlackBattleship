@@ -1,6 +1,5 @@
 package com.example.blackbattleship;
 
-import com.example.blackbattleship.UserStory4;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -65,6 +64,14 @@ public class UserStory4test {
         // Clicar em "Play with a Friend"
         page.clicarPlayWithFriend();
         Thread.sleep(2000);
+
+        // Preencher nickname se o diálogo aparecer
+        if (page.nicknameDialogVisivel()) {
+            page.preencherNickname("Goncalo");
+            Thread.sleep(500);
+            page.clicarContinue();
+            Thread.sleep(2000);
+        }
 
         // Verificar que o URL mudou (link de convite gerado)
         String url = page.obterUrlAtual();
