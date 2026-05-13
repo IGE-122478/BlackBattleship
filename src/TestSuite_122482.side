@@ -1,0 +1,410 @@
+ {
+  "id": "853e5873-6306-4910-8edf-73563f437915",
+  "version": "2.0",
+  "name": "TestSuite_122482",
+  "url": "https://papergames.io",
+  "tests": [{
+    "id": "1cf757c2-897a-4f56-9525-71588e230599",
+    "name": "com.example.blackbattleship.UserStory5",
+    "commands": [{
+      "id": "9e5b772e-9edb-4225-bf3d-5d2988343a0b",
+      "comment": "",
+      "command": "open",
+      "target": "/en/battleship",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a90a1793-6c70-4ebc-98b2-f949c344a251",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eabcad26-1b12-4a17-b9bf-0acc0c018279",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Battleship",
+      "targets": [
+        ["linkText=Battleship", "linkText"],
+        ["css=.nav-link-active", "css:finder"],
+        ["xpath=//a[contains(@href, '/en/battleship')]", "xpath:href"],
+        ["xpath=//ul[3]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Battleship')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d77db738-2669-402e-a656-e78fe0621af3",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Battleship",
+      "targets": [
+        ["linkText=Battleship", "linkText"],
+        ["css=.nav-link-active", "css:finder"],
+        ["xpath=//a[contains(@href, '/en/battleship')]", "xpath:href"],
+        ["xpath=//ul[3]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Battleship')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "71a8aa73-d217-40a8-b5fb-7ecd183a2a15",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-secondary:nth-child(2)",
+      "targets": [
+        ["css=.btn-secondary:nth-child(2)", "css:finder"],
+        ["xpath=//app-juicy-button[4]/button/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31b937ec-39c2-454a-910f-fc555536002a",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn-secondary:nth-child(2)",
+      "targets": [
+        ["css=.btn-secondary:nth-child(2)", "css:finder"],
+        ["xpath=//app-juicy-button[4]/button/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77c23674-8e94-4334-a942-c231f4849f85",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.position-relative > .front",
+      "targets": [
+        ["css=.position-relative > .front", "css:finder"],
+        ["xpath=//a/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04db0269-900a-422b-99f5-fd925dcdd500",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.position-relative > .front",
+      "targets": [
+        ["css=.position-relative > .front", "css:finder"],
+        ["xpath=//a/span[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7da062c0-2eeb-46e1-bda7-cb4190f0f688",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.w-100:nth-child(2) > .btn .mat-mdc-button-touch-target",
+      "targets": [
+        ["css=.w-100:nth-child(2) > .btn .mat-mdc-button-touch-target", "css:finder"],
+        ["xpath=//app-juicy-button[2]/button/span[2]/button/span[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "08512bd0-0bab-4641-8dae-c351af145438",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cdk-focused > .mat-mdc-button-touch-target",
+      "targets": [
+        ["css=.cdk-focused > .mat-mdc-button-touch-target", "css:finder"],
+        ["xpath=//app-juicy-button[2]/button/span[2]/button/span[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3de7373-b076-45d0-9b9b-a3c3ff149022",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.w-100:nth-child(2) > .btn .mat-mdc-button-touch-target",
+      "targets": [
+        ["css=.w-100:nth-child(2) > .btn .mat-mdc-button-touch-target", "css:finder"],
+        ["xpath=//app-juicy-button[2]/button/span[2]/button/span[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5f9315f-0f79-404a-b2a4-f96a49823111",
+      "comment": " aceder às definições do modo de jogo Player vs Robot",
+      "command": "open",
+      "target": "/en/",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "eae21177-b680-4258-8580-89af79ae0d73",
+    "name": "UserStroy6",
+    "commands": [{
+      "id": "69ccb838-3d2e-4ea6-9662-eb7e30222a66",
+      "comment": "aceder à loja para comprar artigos virtuais",
+      "command": "open",
+      "target": "/en/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3963a691-fe6a-44da-baed-c7273f66b0b8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a8e0290-5549-4d4d-b1e2-0b3b131c8b4f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.game-item:nth-child(1) .text-light",
+      "targets": [
+        ["css=.game-item:nth-child(1) .text-light", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Battleship')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb120dd1-ae17-4948-9ccf-02058ac5d907",
+      "comment": "",
+      "command": "click",
+      "target": "css=.game-item:nth-child(1) .text-light",
+      "targets": [
+        ["css=.game-item:nth-child(1) .text-light", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Battleship')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "388a2930-052e-4630-9cdf-a3e3cff3435f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.w-100:nth-child(1) .front",
+      "targets": [
+        ["css=.w-100:nth-child(1) .front", "css:finder"],
+        ["xpath=//app-juicy-button/button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Play with a friend')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3c8c015-9017-4b41-b4f8-ac60f6e7f5c1",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.w-100:nth-child(1) .front",
+      "targets": [
+        ["css=.w-100:nth-child(1) .front", "css:finder"],
+        ["xpath=//app-juicy-button/button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Play with a friend')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69f31a0e-5d98-41af-8f5b-d9c8b6d93ced",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Shop",
+      "targets": [
+        ["linkText=Shop", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(@href, '/en/shop')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Shop')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ea65403-d7b3-4282-921d-7a97cc9ec575",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Shop",
+      "targets": [
+        ["linkText=Shop", "linkText"],
+        ["css=.cdk-focused", "css:finder"],
+        ["xpath=//a[contains(@href, '/en/shop')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Shop')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "67c80967-202d-4f5d-84d6-283be1e1e1a9",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=21",
+      "targets": [
+        ["index=21"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1da5a9f-bab0-415d-afca-178a95b06e54",
+      "comment": "",
+      "command": "click",
+      "target": "css=.continue-prompt-text",
+      "targets": [
+        ["css=.continue-prompt-text", "css:finder"],
+        ["xpath=//div[@id='dismiss-button-element']/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "716a9f9c-c068-44f6-9324-346df9fc29e4",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "relative=parent",
+      "targets": [
+        ["relative=parent"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c9f871d-b43d-4d10-829a-c973687af273",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.box-shadow-1:nth-child(2) .w-75",
+      "targets": [
+        ["css=.box-shadow-1:nth-child(2) .w-75", "css:finder"],
+        ["xpath=//img[@alt='Monsters']", "xpath:img"],
+        ["xpath=//div[2]/a/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c04b3055-2bac-4732-9134-ef148d34199b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.box-shadow-1:nth-child(2) .w-75",
+      "targets": [
+        ["css=.box-shadow-1:nth-child(2) .w-75", "css:finder"],
+        ["xpath=//img[@alt='Monsters']", "xpath:img"],
+        ["xpath=//div[2]/a/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "70c3f46d-0f14-4ccb-8080-cd9686b8c429",
+    "name": "UserStory7",
+    "commands": [{
+      "id": "43e82d31-30b7-4512-b6da-1e243ca3691c",
+      "comment": "quero aceder à página de preços para conhecer os planos",
+      "command": "open",
+      "target": "/en/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc607079-b6c7-4931-98b6-b60dab4ac492",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1055x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b179f04b-9ec5-4502-a0b6-b5f5b666bbcc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.game-item:nth-child(1) .img-fluid",
+      "targets": [
+        ["css=.game-item:nth-child(1) .img-fluid", "css:finder"],
+        ["xpath=//img[@alt='Battleship']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63fc623b-6c09-4e31-874c-7b0464dd15a2",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.w-100:nth-child(2) > .btn > .edge",
+      "targets": [
+        ["css=.w-100:nth-child(2) > .btn > .edge", "css:finder"],
+        ["xpath=//app-juicy-button[2]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fffcf2ca-a638-476e-8335-60bb2e2cee2e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.w-100:nth-child(2) > .btn > .front",
+      "targets": [
+        ["css=.w-100:nth-child(2) > .btn > .front", "css:finder"],
+        ["xpath=//app-juicy-button[2]/button/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Play vs robot')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f4fca8c-32f8-4bc3-a687-66190c73ab75",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cdk-focused > .hide-if-collapsed",
+      "targets": [
+        ["css=.cdk-focused > .hide-if-collapsed", "css:finder"],
+        ["xpath=//ul[2]/li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Pricing')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ebbacbd5-b4f5-4f7f-94bd-3a7015b56f14",
+    "name": "UserStory8",
+    "commands": [{
+      "id": "38320dde-95f4-4ea2-aa4f-f544045cd5ac",
+      "comment": "",
+      "command": "open",
+      "target": "/en/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0efa20c-28ef-406d-badd-c4a4c6ec2e02",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1056x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c8d62e8-3b9d-4d33-b0d5-7ab58a80ce72",
+      "comment": "",
+      "command": "click",
+      "target": "css=.game-item:nth-child(1) .img-fluid",
+      "targets": [
+        ["css=.game-item:nth-child(1) .img-fluid", "css:finder"],
+        ["xpath=//img[@alt='Battleship']", "xpath:img"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90e5aa5f-9f81-463c-9bde-72f526de5be4",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.nav-item:nth-child(3) > .nav-link > .hide-if-collapsed",
+      "targets": [
+        ["css=.nav-item:nth-child(3) > .nav-link > .hide-if-collapsed", "css:finder"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Goodies')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb5e1e41-72b0-4738-8997-335e5e050b00",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cdk-focused > .hide-if-collapsed",
+      "targets": [
+        ["css=.cdk-focused > .hide-if-collapsed", "css:finder"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Goodies')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win8169",
+      "windowTimeout": 2000
+    }, {
+      "id": "b0760032-07eb-4a12-adb4-93ccbdeebb94",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.nav-item:nth-child(3) > .nav-link > .hide-if-collapsed",
+      "targets": [
+        ["css=.nav-item:nth-child(3) > .nav-link > .hide-if-collapsed", "css:finder"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Goodies')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75526245-ec41-4694-ae88-58bbb9d7b833",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win8169}",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "4bbb711e-fa3d-4d18-a277-9b7eec0f2bc2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1cf757c2-897a-4f56-9525-71588e230599"]
+  }],
+  "urls": ["https://papergames.io/"],
+  "plugins": []
+}
