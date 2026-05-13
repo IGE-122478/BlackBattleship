@@ -7,10 +7,8 @@ public class UserStory5 {
 
     private WebDriver driver;
 
-    private By battleshipLink = By.linkText("Battleship");
-
-    private By playVsRobotButton =
-            By.cssSelector(".cdk-focused > .mat-mdc-button-touch-target");
+    private By settingsButton =
+            By.cssSelector(".w-100:nth-child(2) > .btn .mat-mdc-button-touch-target");
 
     public UserStory5(WebDriver driver) {
         this.driver = driver;
@@ -20,8 +18,8 @@ public class UserStory5 {
         driver.get("https://papergames.io/en/battleship");
     }
 
-    public void clickPlayVsRobot() {
-        driver.findElement(playVsRobotButton).click();
+    public void clickSettings() {
+        driver.findElement(settingsButton).click();
     }
 
     public String getCurrentUrl() {

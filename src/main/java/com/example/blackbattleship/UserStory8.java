@@ -7,11 +7,14 @@ public class UserStory8 {
 
     private WebDriver driver;
 
+    private By cookiesButton =
+            By.cssSelector(".fc-cta-consent");
+
     private By battleshipImage =
             By.cssSelector(".game-item:nth-child(1) .img-fluid");
 
     private By goodiesButton =
-            By.cssSelector(".cdk-focused > .hide-if-collapsed");
+            By.xpath("//span[contains(text(),'Goodies')]");
 
     public UserStory8(WebDriver driver) {
         this.driver = driver;
@@ -19,6 +22,10 @@ public class UserStory8 {
 
     public void openHomePage() {
         driver.get("https://papergames.io/en/");
+    }
+
+    public void acceptCookies() {
+        driver.findElement(cookiesButton).click();
     }
 
     public void clickBattleship() {
@@ -31,5 +38,9 @@ public class UserStory8 {
 
     public String getWindowHandle() {
         return driver.getWindowHandle();
+    }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 }

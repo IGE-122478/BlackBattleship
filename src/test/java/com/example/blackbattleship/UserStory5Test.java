@@ -29,7 +29,7 @@ public class UserStory5Test {
 
         Thread.sleep(2000);
 
-        page.clickPlayVsRobot();
+        page.clickSettings();
 
         Thread.sleep(2000);
 
