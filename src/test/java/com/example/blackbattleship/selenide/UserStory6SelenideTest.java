@@ -1,4 +1,4 @@
-package Selenide;
+package com.example.blackbattleship.selenide;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,9 +8,10 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
- * User Story 8
+ * User Story 6
+ * Como utilizador, quero aceder à loja para comprar artigos virtuais.
  */
-public class UserStory8SelenideTest {
+public class UserStory6SelenideTest {
 
     @BeforeAll
     static void setup() {
@@ -21,36 +22,22 @@ public class UserStory8SelenideTest {
     }
 
     @Test
-    void testUserStory8() throws InterruptedException {
+    void testUserStory6() throws InterruptedException {
 
         // abrir homepage
         open("https://papergames.io/en/");
 
         Thread.sleep(3000);
 
-        // aceitar cookies se aparecer
-        try {
-
-            $(".fc-button.fc-cta-consent")
-                    .shouldBe(visible)
-                    .click();
-
-            Thread.sleep(2000);
-
-        } catch (Exception ignored) {
-
-        }
-
         // abrir Battleship
-        $(".game-item:nth-child(1) .img-fluid")
+        $(".game-item:nth-child(1) .text-light")
                 .shouldBe(visible)
                 .click();
 
         Thread.sleep(3000);
 
-        // clicar em Goodies
-        $$("a")
-                .findBy(com.codeborne.selenide.Condition.text("Goodies"))
+        // clicar em Shop
+        $("a[href='/en/shop']")
                 .shouldBe(visible)
                 .click();
 
